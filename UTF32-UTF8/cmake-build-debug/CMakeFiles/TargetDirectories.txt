@@ -1,0 +1,3 @@
+/home/lemikhovalex/Documents/Acronis/7th term/File systems hw/UTF32-UTF8/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/lemikhovalex/Documents/Acronis/7th term/File systems hw/UTF32-UTF8/cmake-build-debug/CMakeFiles/untitled.dir
+/home/lemikhovalex/Documents/Acronis/7th term/File systems hw/UTF32-UTF8/cmake-build-debug/CMakeFiles/edit_cache.dir

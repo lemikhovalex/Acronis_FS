@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lemikhovalex/Documents/Acronis/7th term/File systems hw/UTF32-UTF8/converter.hpp
+cstdint
+-
+bitset
+-
+iostream
+-
+vector
+-
+stdexcept
+-
+
+/home/lemikhovalex/Documents/Acronis/7th term/File systems hw/UTF32-UTF8/main.cpp
+bitset
+-
+iconv.h
+-
+iostream
+-
+converter.hpp
+/home/lemikhovalex/Documents/Acronis/7th term/File systems hw/UTF32-UTF8/converter.hpp
+stdexcept
+-
+
