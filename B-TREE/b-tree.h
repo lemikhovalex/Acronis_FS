@@ -3,8 +3,8 @@
 //
 
 #include <stdint.h>
-#define MAX_SIZE 5
-#define TEST_SIZE 60
+#define MAX_SIZE 5 // care full, only 2n -1 kind of value
+#define TEST_SIZE 401
 typedef struct Node *btree;
 
 //data structure
