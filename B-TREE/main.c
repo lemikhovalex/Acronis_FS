@@ -8,39 +8,6 @@ int main(int argc, char **argv)
     uint64_t test_size = TEST_SIZE;
     struct Data d;
 
-
-
-    // creating tree
-    /*
-    btree b0 = init_BTree();
-    d.key = 3; d.value = 3;
-    B_tree_insert(b0, d);
-    d.key = 6; d.value = 6;
-    B_tree_insert(b0, d);
-    d.key = 1; d.value = 1;
-    B_tree_insert(b0, d);
-    d.key = 2; d.value = 2;
-    B_tree_insert(b0, d);
-    d.key = 4; d.value = 4;
-    B_tree_insert(b0, d);
-    d.key = 5; d.value = 5;
-    B_tree_insert(b0, d);
-    d.key = 7; d.value = 7;
-    B_tree_insert(b0, d);
-    d.key = 8; d.value = 8;
-    B_tree_insert(b0, d);
-    d.key = 9; d.value = 9;
-    B_tree_insert(b0, d);
-    d.key = 10; d.value = 10;
-    B_tree_insert(b0, d);
-
-    uint64_t l0 = 0;
-    get_number_of_elems(b0, &l0);
-    printf("len of d1 = %lu\n", l0);
-
-
-
-*/
     // creating smth to push
 
     btree b = init_BTree();
