@@ -31,7 +31,7 @@ void free_BTree(btree b)
  * */
 {
     if (!(b->is_leaf))
-    /* if there are more nodes, let's make them free */
+        /* if there are more nodes, let's make them free */
     {
         for (int i = 0; i < MAX_SIZE+1; i++)
         {
@@ -72,31 +72,37 @@ static btree btree_insert(btree b, struct Data elem, struct Data *median)
 {
     // calulating position to insert
     int position = array_search__key(b->size, b->data, elem.key);
-    /*
-    * if (position < b->size && b->data[position].key == elem.key)
-    *
-    *{
+
+
+    //printf("key = %lu\n pos=%lu\n", elem.key, position);
+    //for(int j = 0; j < b->size; j++)
+    //{
+        //printf("%d, ",b->data[j]);
+    //}
+    //printf("b->size, %d\n\n", b->size);
+
+    if (position < b->size && b->data[position].key == elem.key)
+    {
         b->data[position] = elem;
         return NULL;
-    *}
-    **/
+    }
 
     // for better understanding follow points
     if (b->is_leaf)
-    // 1) no way, we got a leaf, let's just add to data, about overflow later
+        // 1) no way, we got a leaf, let's just add to data, about overflow later
     {
         memmove(&b->data[position + 1], &b->data[position], sizeof(struct Data) * (b->size - position));
         b->data[position] = elem;
         b->size++;
     }
     else
-    // 6) wait, if we are not in leaf
+        // 6) wait, if we are not in leaf
     {
         struct Data child_median;
         // no way, insert to child
         // b->child[position] due to algorithm
         if (b->child[position] == NULL)
-        // here we got (maybe) NULL child, so let,s create a child
+            // here we got (maybe) NULL child, so let,s create a child
         {
             b->child[position] = init_BTree();
         }
@@ -117,7 +123,7 @@ static btree btree_insert(btree b, struct Data elem, struct Data *median)
         }
     }
 
-    if (b->size >= MAX_SIZE)
+    if (b->size > MAX_SIZE)
     // 3) if we are oversize
     {
         // creating new node
@@ -139,7 +145,7 @@ static btree btree_insert(btree b, struct Data elem, struct Data *median)
         }
 
         if (!(b->is_leaf))
-        // if not leaf we shold copy not only data, but children too
+            // if not leaf we shold copy not only data, but children too
         {
             memmove(b_new->child, &b->child[mid + 1], sizeof(btree) * (b_new->size + 1));
             // and again let's set NULL to all children we dont' want to see
@@ -152,7 +158,7 @@ static btree btree_insert(btree b, struct Data elem, struct Data *median)
         // passing new node. next point is in other function
         return b_new;
     } else
-    // 2) if we are not over sized let's go do nothing and this is the end
+        // 2) if we are not over sized let's go do nothing and this is the end
     {
         return NULL;
     }
@@ -167,7 +173,7 @@ void B_tree_insert(btree b, struct Data elem)
     btree b_new = btree_insert(b, elem, &median);
     // so we got a
     if (b_new)
-    // 5) we got a new tree with data to be reconstructed. we need to unite them
+        // 5) we got a new tree with data to be reconstructed. we need to unite them
     {
         // we copy data to new tree
         btree b_final = (btree) malloc(sizeof(*b_new));
@@ -181,24 +187,13 @@ void B_tree_insert(btree b, struct Data elem)
         b->child[1] = b_new;
         // set useless data to NULL
 
-        if (b->data[1].key != NULL)
-        {
-            b->data[1].key = NULL;
-        }
-        if (b->child[MAX_SIZE] != NULL)
-        {
-            b->child[MAX_SIZE] = NULL;
-        }
+        b->data[1].key = NULL;
+        b->child[MAX_SIZE] = NULL;
         for(int i = 2; i < MAX_SIZE; i++)
         {
-            if (b->data[i].key != NULL)
-            {
-                b->data[i].key = NULL;
-            }
-            if (b->child[i] != NULL)
-            {
-                b->child[i] = NULL;
-            }
+            b->data[i].key = NULL;
+            b->child[i] = NULL;
+
         }
     }
 }
@@ -209,7 +204,7 @@ uint64_t B_tree_search(btree b, uint64_t key)
 {
 
     if (b->size == 0)
-    //empty tree doestn seems to be good
+        //empty tree doestn seems to be good
     {
         printf("no data in tree\n");
         return -1;
@@ -222,7 +217,7 @@ uint64_t B_tree_search(btree b, uint64_t key)
     {
         return b->data[position].value;
     } else if (b->is_leaf)
-    // we need to go down, but can we?
+        // we need to go down, but can we?
     {
         return -1;
     }

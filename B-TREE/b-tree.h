@@ -3,8 +3,8 @@
 //
 
 #include <stdint.h>
-#define MAX_SIZE 190
-#define TEST_SIZE 140
+#define MAX_SIZE 5
+#define TEST_SIZE 60
 typedef struct Node *btree;
 
 //data structure
