@@ -27,21 +27,24 @@ int main(int argc, char const *argv[])
     std::vector<uint32_t> new_utf32_vector;
     new_utf32_vector = from_utf8(utf8_vector);
 
-    cout << "utf32_vector---init letter \nnew_utf32_vector" << endl;
+
     for (int i = 0; i < utf32_vector.size(); ++i)
     {
-        cout << bitset<32>(utf32_vector[i]) << "---"<< init_string[i]<< "\n" << bitset<32>(new_utf32_vector[i]) << endl;
+        cout << "Here is UTF32 letter we got:" << endl;
+        cout << bitset<32>(utf32_vector[i]) << endl;
+        cout << "And here is the same but shorter:" << endl << init_string[i] << endl;
+        cout << "UTF32->UTF8->UTF32 is here:"<< endl << bitset<32>(new_utf32_vector[i]) << endl;
         printf("\n");
     }
 
     if (utf32_vector != new_utf32_vector)
     {
-        cout << "INIT_UTF32_!=_OUT_UTF32 !+" << endl;
+        cout << "INIT_UTF32_!=_OUT_UTF32 !" << endl;
         return -1;
     }
     else
     {
-        cout << endl << "FINE!" << endl;
+        cout << endl << "UTF32 there and back works FINE!\n\n\n";
     }
 
 
