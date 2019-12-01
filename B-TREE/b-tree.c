@@ -294,10 +294,8 @@ btree merge(btree b1, btree b2)
 
     struct Data data[l1+l2];
     // let's collect data from all the tree
-    printf("Got array of length %lu\n", l1+l2);
     tree_to_array(b1, &currpos, data);
     tree_to_array(b2, &currpos, data);
-    printf("Transformation to array is done \n");
     // and finaly push all of them to brand new tree
     btree out = init_BTree();
     for(uint64_t i = 0; i < l1+l2; i++)

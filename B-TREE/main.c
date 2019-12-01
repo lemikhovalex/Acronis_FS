@@ -32,11 +32,8 @@ int main(int argc, char **argv)
     }
     if (ok_flag == 0)
     {
-        printf("Everything is alright\n");
+        printf("I found all i've inserted\n");
     }
-    uint64_t sum = 0;
-    get_number_of_elems(b, &sum);
-    printf("number of elements = %lu\n", sum);
     printf("Let's try to merge trees\n");
 
     btree b1 = init_BTree();
