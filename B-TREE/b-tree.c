@@ -30,7 +30,6 @@ void free_BTree(btree b)
  * of courese destroy not only one nide, but all of them recursively
  * */
 {
-    //printf("lil\n");
     if (!(b->is_leaf))
     /* if there are more nodes, let's make them free */
     {

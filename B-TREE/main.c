@@ -58,8 +58,8 @@ int main(int argc, char **argv)
     printf("Merge is done\n");
     free_BTree(b1);
     free_BTree(b2);
-    printf("b1 and b2 are freed\n");
     free_BTree(b);
+    printf("Trees are freed\n");
 
 
     return 0;
