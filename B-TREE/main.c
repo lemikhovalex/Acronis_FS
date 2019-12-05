@@ -16,6 +16,7 @@ int main(int argc, char **argv)
     {
         d.key = i;
         d.value = i*i;
+        d.exist = 1;
         // printf("gonna push key  : %u\n", d.key);
         // printf("gonna push value: %u\n", d.value);
         B_tree_insert(b, d);
@@ -43,16 +44,18 @@ int main(int argc, char **argv)
     {
         d.key = i;
         d.value = i;
+        d.exist = 1;
         B_tree_insert(b1, d);
 
+        d.exist = 1;
         d.key = i + 2 * test_size;
         d.value = i + 100;
         B_tree_insert(b2, d);
     }
 
-    //uint64_t l1 = 0;
-    //get_number_of_elems(b1, &l1);
-    //printf("len of d1 = %lu\n", l1);
+    uint64_t l1 = 0;
+    get_number_of_elems(b1, &l1);
+    printf("len of d1 = %lu\n", l1);
 
     btree merged_tree = merge(b1, b2);
 

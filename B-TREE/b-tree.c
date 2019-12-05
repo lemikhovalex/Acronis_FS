@@ -19,6 +19,7 @@ btree init_BTree(void)
         b->child[i] = NULL;
         b->data[i].key = NULL;
         b->data[i].value = NULL;
+        b->data[i].exist = 0;
     }
     b->child[MAX_SIZE] = NULL;
     return b;
@@ -215,7 +216,15 @@ uint64_t B_tree_search(btree b, uint64_t key)
     //if key is founded
     if (position < b->size && b->data[position].key == key)
     {
-        return b->data[position].value;
+        if (b->data[position].exist != 0)
+        {
+            return b->data[position].value;
+        }else
+        {
+            printf("it seems that data is deleted\n");
+            return -1;
+        }
+
     } else if (b->is_leaf)
         // we need to go down, but can we?
     {
