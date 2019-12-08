@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 {
     uint64_t test_size = TEST_SIZE;
     struct Data d;
-
+    d.exist = 1;
     // creating smth to push
 
     btree b = init_BTree();
@@ -16,7 +16,6 @@ int main(int argc, char **argv)
     {
         d.key = i;
         d.value = i*i;
-        d.exist = 1;
         // printf("gonna push key  : %u\n", d.key);
         // printf("gonna push value: %u\n", d.value);
         B_tree_insert(b, d);
@@ -25,7 +24,7 @@ int main(int argc, char **argv)
     int ok_flag = 0;
     for (uint64_t i = 1; i <= test_size; i++)
     {
-        if(B_tree_search(b, i) == -1    )
+        if(B_tree_search(b, i) == -1)
         {
             printf("FUUUUU, cant find key %lu in tree\n", i);
             ok_flag = 1;
@@ -35,6 +34,20 @@ int main(int argc, char **argv)
     {
         printf("I found all i've inserted\n");
     }
+    uint64_t  another_test = TEST_SIZE + 1;
+    d.key = another_test;
+    d.value = another_test * another_test;
+    printf("Let's insert another key %lu with walue %lu\n",d.key, d.value);
+    B_tree_insert(b, d);
+    uint64_t another_test_search_res = B_tree_search(b, another_test);
+    if(another_test_search_res == (-1))
+    {
+        printf("Faild %lu finding\n", another_test);
+    }else
+    {
+        printf("under %lu key found %lu\n", another_test, another_test_search_res);
+    }
+
     printf("Let's try to merge trees\n");
 
     btree b1 = init_BTree();
@@ -44,10 +57,8 @@ int main(int argc, char **argv)
     {
         d.key = i;
         d.value = i;
-        d.exist = 1;
         B_tree_insert(b1, d);
 
-        d.exist = 1;
         d.key = i + 2 * test_size;
         d.value = i + 100;
         B_tree_insert(b2, d);
