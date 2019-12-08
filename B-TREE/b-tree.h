@@ -12,6 +12,7 @@ struct Data
 {
     uint64_t key;
     uint64_t value;
+    uint8_t exist;
 };
 
 //node structure

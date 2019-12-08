@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/B_TREE.dir/main.c.o  -o B_TREE 
