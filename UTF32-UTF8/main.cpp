@@ -47,30 +47,25 @@ int main(int argc, char const *argv[])
         cout << endl << "UTF32 there and back works FINE!\n\n\n";
     }
 
-
-    cout << "utf8_vector---init letter \nutf32_vector" << endl;
-    int l = 0;
-    int f = 0;
-    for (int i = 0; i < utf8_vector.size(); ++i)
+    int utf8_pos = 0;
+    int utf8_len = 0;
+    for(int i =0; i <init_string.length(); i++)
     {
-        if ((utf8_vector[i] & 128u) && (utf8_vector[i] & 64u))
+        cout << "Here is UTF32 letter we got:" << endl;
+        cout << bitset<32>(utf32_vector[i]) << endl;
+        cout << "And here is the same but shorter:" << endl << init_string[i] << endl;
+        // here starts printing utf8
+        cout << "UTF32->UTF8 is here:"<< endl;
+        //finding out amount of bytes in this letter
+        for(utf8_len = 1; (int)(utf8_vector[utf8_pos] >> (8-utf8_len)) == 1; utf8_len++)
         {
-            f = 1;
-            cout << bitset<8>(utf8_vector[i]);
         }
-        else if ((utf8_vector[i] & 128u) && !(utf8_vector[i] & 64u))
+        for(int i = 0; i < utf8_len; i++)
         {
-            cout << " " << bitset<8>(utf8_vector[i]);
+            cout << bitset<8>(utf8_vector[utf8_pos + i]) << " ";
         }
-        else if (!(utf8_vector[i] & 128u))
-        {
-            if (f ==1)
-            {
-                cout << "---" << init_string[l] << endl << utf32_vector[l-1] << endl;
-            }
-            cout << bitset<8>(utf8_vector[i]) << "---" << init_string[l] << endl << bitset<32>(utf32_vector[l]) << endl;
-            l ++;
-        }
+        utf8_pos += utf8_len;
+        printf("\n");
     }
     return 0;
 }
